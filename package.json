@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.8",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "html2canvas": "^1.0.0-alpha.12",
+    "html2pdf.js": "^0.9.2",
+    "multer": "^2.0.1",
+    "pg": "^8.16.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "jest": "^30.0.0",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.1"
+  },
+  "scripts": {
+    "build": "echo",
+    "migrate": "node src/scripts/migrations/migrate.js",
+    "migrate:dev": "node src/scripts/migrations/migrate.js development",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "npx jest --coverage --runInBand"
+  }
+}

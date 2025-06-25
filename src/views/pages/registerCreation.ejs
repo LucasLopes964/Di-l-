@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Registro</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/registerCreation.css">
+  <style>
+#fabricModal .button,
+#fabricModal #colorPicker {
+  height: 40px;
+  min-width: 40px;
+  padding: 0 1rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+#fabricModal #colorPicker {
+  padding: 0;
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  cursor: pointer;
+  margin: 0;
+}
+#fabricModal .card {
+  width: 90vw;
+  height: 90vh;
+  max-width: 1200px;
+  max-height: 900px;
+  min-width: 280px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: var(--color-background);
+}
+
+.fabric-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.fabric-toolbar .button,
+.fabric-toolbar #colorPicker {
+  min-width: 0;
+  flex: 0 0 36px;
+  max-width: 36px;
+  height: 36px;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fabric-toolbar .button img,
+.fabric-toolbar .button svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+.fabric-toolbar #colorPicker {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  margin: 0 2px;
+  padding: 0;
+}
+
+#undoBtn img, #undoBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 900px) {
+  #fabricModal .card {
+    max-width: 98vw;
+    max-height: 90vh;
+    width: 98vw;
+    height: 90vh;
+  }
+}
+
+@media (max-width: 600px) {
+  #fabricModal .card {
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    padding: 0;
+  }
+  .fabric-toolbar {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.3rem;
+    justify-content: center;           /* Centraliza os botões */
+    margin-top: 5rem !important;     /* Distância maior do topo */
+    margin-bottom: 0.7rem !important;
+  }
+  .fabric-toolbar .button,
+  .fabric-toolbar #colorPicker {
+    flex: 0 0 48px;
+    max-width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 0;
+    padding: 0;
+  }
+  .fabric-toolbar .button img,
+  .fabric-toolbar .button svg {
+    width: 32px;
+    height: 32px;
+  }
+  .fabric-toolbar #colorPicker {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+  #undoBtn img, #undoBtn svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+</style>
+</head>
+<body>
+  <main class="container register-creation-main">
+    <input type="hidden" id="userId" name="userId" value="<%= user.id %>">
+    <h1 class="register-title">Criar registro</h1>
+    <form id="form-registro">
+
+      <div class="form-group">
+        <label class="label" for="ambientes">
+          Ambiente <span class="required-star">*</span>
+          <span class="text-muted ambiente-tip">(Selecione o ambiente)</span>
+        </label>
+        <select class="input" id="ambientes" name="ambientes" required>
+          <option value="" disabled selected>Selecione</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="label" for="nome">Nome do registro: <span class="required-star">*</span></label>
+        <input class="input" type="text" id="nome" name="nome" placeholder="Nome do registro" required>
+      </div>
+
+      <div class="form-group">
+        <label class="label" for="descricao">Descrição: <span class="required-star">*</span></label>
+        <textarea class="input" id="descricao" name="descricao" placeholder="Insira aqui a descrição do registro" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="label" for="categoriasTags">Categoria: <span class="required-star">*</span></label>
+        <select class="input" id="categoriasTags" name="categorias" required>
+          <option value="" disabled selected>Selecione</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="grupo-patologia">
+        <label class="label" for="tags">Patologia:</label>
+        <select class="input" id="tags" name="tags" style="margin-bottom: 0.5rem;">
+        </select>
+        <div id="patologia-actions"></div>
+      </div>
+      <div class="form-group">
+        <label class="label">Registro fotográfico:</label>
+        <div class="image-placeholder" id="imagePreviewContainer">
+          <div class="image-card" id="imageCard">
+            <img src="https://placehold.co/600x400" alt="Registro fotográfico" class="register-photo" id="registerPhoto">
+          </div>
+        </div>
+        <input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none;">
+        <button class="button button-outline add-marker-btn" type="button" id="addPhotoBtn">Adicionar Foto</button>
+        <button class="button button-outline" type="button" style="margin-top: 0.5rem;" id="editImageBtn">Editar Imagem</button>
+      </div>
+
+      <!-- Modal for Fabric.js editor -->
+      <div id="fabricModal" class="modal-bg" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
+        <div class="card shadow rounded" style="position:relative; width:90vw; height:90vh; max-width:1200px; max-height:900px; display:flex; flex-direction:column; box-sizing:border-box; background:var(--color-background);">
+          <button type="button" id="closeFabricModal" class="button button-outline" style="position:absolute; top:10px; right:10px; z-index:2; padding:0.25rem 0.75rem; min-width:32px; min-height:32px;">X</button>
+          <div class="fabric-toolbar" style="margin-bottom:1px; flex-shrink:0; display:flex; gap:0.5rem; align-items:center;">
+            <button type="button" id="drawRectBtn" class="button button-outline"><img src="/assets/square.svg" alt="square"></button>
+            <button type="button" id="drawCircleBtn" class="button button-outline"><img src="/assets/circle.svg" alt="circle"></button>
+            <button type="button" id="drawLineBtn" class="button button-outline"><img src="/assets/pencil.svg" alt="pencil"></button>
+            <input type="color" id="colorPicker" value="#ff0000" style="width:40px; border:none; background:transparent; cursor:pointer;">
+          </div>
+          <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+            <canvas id="fabricCanvas" style="border:1px solid var(--color-border); max-width:100%; max-height:100%; width:100%; height:100%; background:var(--color-muted-background);"></canvas>
+          </div>
+          <div style="display: flex; justify-content: flex-end; padding: 0; margin: 0;">
+            <button type="button" id="saveFabricImageBtn" class="button button-primary" style="width:100%; border-radius: 0 0 8px 8px; padding: 1rem 0; font-size:1.1rem;">Salvar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group actions">
+        <button type="button" class="button button-primary" id="botaoSalvar">Salvar</button>
+        <button type="button" class="button button-outline" id="botaoCancelar">Cancelar</button>
+      </div>
+    </form>
+  </main>
+  <script src="/scripts/registroInspecao.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+</body>
+</html>

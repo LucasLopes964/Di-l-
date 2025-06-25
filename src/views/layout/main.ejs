@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= pageTitle %></title> 
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="sidebar-desktop">
+    <%- include('../components/sidebar', { activePage: activePage, user: user }) %>
+  </div>
+
+  <div class="main-content">
+    <%- include('../components/header') %>
+    <main class="page-content">
+      <%- include(content) %>
+    </main>
+  </div>
+
+  <footer class="bottom-nav-mobile">
+    <%- include('../components/bottom-nav', { active: activePage }) %>
+  </footer>
+  
+  <style>
+    @media (min-width: 769px) {
+      .sidebar-desktop { 
+        position: fixed; 
+        left: 0; 
+        top: 0; 
+        width: 280px; 
+        height: 100vh; 
+      }
+      .main-content { 
+        margin-left: 240px; 
+      }
+      .page-content {
+        padding: 2rem;
+        padding-left: 4rem;
+      }
+      .bottom-nav-mobile { 
+        display: none; 
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar-desktop { 
+        display: none; 
+      }
+      .page-content {
+        padding: 1rem;
+        padding-bottom: calc(80px + 1rem);
+      }
+      .bottom-nav-mobile { 
+        position: fixed; 
+        bottom: 0; 
+        width: 100%; 
+      }
+    }
+  </style>
+
+  <script>
+    function setInitialTheme() {
+      const userPref = localStorage.getItem('theme');
+      if (userPref) {
+        document.body.classList.toggle('dark-theme', userPref === 'dark');
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-theme');
+      }
+    }
+
+    setInitialTheme();
+
+    document.querySelectorAll('.theme-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const theme = this.dataset.theme;
+        if (theme === 'dark') {
+          document.body.classList.add('dark-theme');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.body.classList.remove('dark-theme');
+          localStorage.setItem('theme', 'light');
+        }
+        document.querySelectorAll('.theme-option').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

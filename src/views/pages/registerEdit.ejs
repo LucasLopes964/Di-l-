@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Registro</title>
+  <input type="hidden" id="userId" name="userId" value="<%= user.id %>">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/registerCreation.css">
+  <link rel="stylesheet" href="/css/registerEdit.css">
+</head>
+<body>
+  <main class="container register-creation-main">
+    <input type="hidden" id="userId" value="<%= userId %>">
+    <h1 class="register-title">Editar registro</h1>
+    <form id="form-editar-registro">
+      <div class="form-group">
+        <label class="label" for="ambientes">
+          Ambiente <span class="required-star">*</span>
+          <span class="text-muted ambiente-tip">(Selecione o ambiente)</span>
+        </label>
+        <select class="input" id="ambientes" name="ambientes" required>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="label" for="nome">Nome do registro: <span class="required-star">*</span></label>
+        <input class="input" type="text" id="nome" name="nome" value="" required>
+      </div>
+      <div class="form-group">
+        <label class="label" for="descricao">Descrição: <span class="required-star">*</span></label>
+        <textarea class="input" id="descricao" name="descricao" required></textarea>
+      </div>
+      <div class="form-group">
+        <label class="label" for="categoriasTags">Categoria: <span class="required-star">*</span></label>
+        <select class="input" id="categoriasTags" name="categorias" required>
+        </select>
+      </div>
+      <div class="form-group" id="grupo-patologia">
+        <label class="label" for="tags">Patologia:</label>
+        <select class="input" id="tags" name="tags">
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="label">Registro fotográfico:</label>
+        <div class="image-placeholder" id="imagePreviewContainer">
+          <div class="image-card" id="imageCard">
+            <img src="" alt="Registro fotográfico" class="register-photo" id="registerPhoto">
+          </div>
+        </div>
+        <input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none;">
+        <button type="button" id="addPhotoBtn">Alterar Foto</button>
+      </div>
+      <div class="form-group">
+        <label class="label">Marcadores:</label>
+        <div class="markers-list">
+        </div>
+      </div>
+      <div class="form-group actions">
+        <button type="button" class="button button-primary" id="botaoSalvar">Salvar alterações</button>
+        <button type="button" class="button button-outline" id="botaoCancelar">Cancelar</button>
+      </div>
+    </form>
+  </main>
+  <script src="/scripts/registerEdit.js"></script>
+</body>
+</html>

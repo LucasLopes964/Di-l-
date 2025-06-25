@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/css/inspection-list.css">
+<article class="inspection-list-item bg-muted rounded" data-id="<%= id %>" style="display:flex;align-items:center;gap:1rem;cursor:pointer;padding:1rem;transition:background 0.2s;">
+  <img class="icon" src="/assets/frame.svg" alt="Ícone de prédio" style="width:36px;height:36px;flex-shrink:0;"/>
+  <div class="property-info" style="flex:1;min-width:0;">
+    <h2 class="property-name inspection-list-title" style="font-size:var(--text-body-medium);font-weight:600;color:var(--color-foreground);margin:0 0 0.2rem 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><%= title %></h2>
+    <p class="property-address" style="font-size:var(--text-body-small);color:var(--color-muted-foreground);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><%= address %></p>
+  </div>
+  <img class="icon" src="/assets/chevron-right.svg" alt="Seta para a direita" style="width:22px;height:22px;opacity:0.7;flex-shrink:0;"/>
+</article>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.inspection-list-item').forEach(function (item) {
+      item.addEventListener('click', function () {
+        const id = item.getAttribute('data-id');
+        window.location.href = '/inspection?id=' + id;
+      });
+    });
+  });
+</script>

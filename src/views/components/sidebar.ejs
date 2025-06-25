@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/css/sidebar.css">
+
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <img src="/assets/logo-ipt.svg" alt="IPT Logo" class="logo">
+  </div>
+  <nav class="sidebar-nav">
+    <a href="/" class="nav-item <%= activePage === 'home' ? 'active' : '' %>">
+      <img src="/assets/icon-home.svg" alt="Dashboard Icon" class="nav-icon">
+      <span>Home</span>
+    </a>
+    <a href="/mapa" class="nav-item <%= activePage === 'mapa' ? 'active' : '' %>">
+      <img src="/assets/icon-map.svg" alt="Map Icon" class="nav-icon">
+      <span>Mapa</span>
+    </a>
+    <a href="/inspections" class="nav-item <%= activePage === 'inspections' ? 'active' : '' %>">
+      <img src="/assets/icon-inspections.svg" alt="Inspections Icon" class="nav-icon">
+      <span>Inspeções</span>
+    </a>
+    <a href="/calendar" class="nav-item <%= activePage === 'calendario' ? 'active' : '' %>">
+      <img src="/assets/icon-calendar.svg" alt="Calendar Icon" class="nav-icon">
+      <span>Calendário</span>
+    </a>
+    <a href="/config" class="nav-item <%= activePage === 'config' ? 'active' : '' %>">
+      <img src="/assets/icon-settings.svg" alt="Settings Icon" class="nav-icon">
+      <span>Configurações</span>
+    </a>
+  </nav>
+</div>

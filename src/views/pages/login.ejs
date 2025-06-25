@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>IPT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="login-left">
+      <div class="login-form">
+        <div class="logo">
+          <svg width="288" height="223" viewBox="0 0 288 223" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_866_1651)">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M270.63 33.9101C270.63 35.9701 268.95 37.6501 266.88 37.6501H253.68C251.62 37.6501 249.95 35.9701 249.95 33.9101V20.5701C249.95 18.5001 251.62 16.8301 253.68 16.8301H266.88C268.95 16.8301 270.63 18.5001 270.63 20.5701V33.9101Z"
+                fill="#00B5E2" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M287.66 17.07C287.66 19.14 285.98 20.82 283.92 20.82H270.71C268.64 20.82 266.98 19.14 266.98 17.07V3.74C266.98 1.67 268.65 0 270.71 0H283.92C285.98 0 287.66 1.66 287.66 3.74V17.07Z"
+                fill="#00558C" />
+              <path
+                d="M26.87 186.87C19.95 186.87 19.93 186.85 19.93 181.05V95.9001C19.93 94.7401 19.41 94.2101 18.32 94.2101H6.27C0 94.2101 0 93.8401 0 87.8201C0 87.1301 0 77.8101 0 77.8101H33.56C39.39 77.7901 39.5 78.3501 39.5 83.9401C39.5 80.9601 39.5 186.87 39.5 186.87H26.87Z"
+                fill="#00558C" />
+              <path
+                d="M122.95 77.8798C120.51 77.8698 117.45 77.8198 115.04 77.8198C99.56 77.8798 84.12 77.8198 68.97 77.8198V217.55C68.97 222.13 69.47 222.7 73.47 222.7H88.35V186.91C98.67 186.91 115.04 186.93 115.04 186.93H122.91C148.99 186.93 162.93 152.99 162.93 130.55C162.93 106.91 148.82 77.8698 122.95 77.8698M122.08 171.19C119.67 171.19 98.05 171.18 88.36 171.18V94.1898H122.9C134.43 94.7998 141.71 105.72 141.71 131.17C141.71 156.62 133.61 171.19 122.08 171.19Z"
+                fill="#00558C" />
+              <path
+                d="M262.31 184.34C262.31 184.34 243.07 186.9 233.94 186.9C218 186.9 207.15 184.04 201.4 178.33C195.65 172.61 192.77 161.78 192.77 145.84L192.79 94.1802H182.09C175.66 94.1802 176.17 94.6802 176.16 86.6702V77.8102H192.77V65.2402C192.77 55.9502 192.81 55.9502 202.57 55.9502C212.33 55.9502 212.33 56.0302 212.33 65.1702V77.8102C212.33 77.8102 251.92 77.8102 254.03 77.8102C260.09 77.8102 260.11 78.4402 260.12 83.6202L260.1 94.1802H212.32L212.34 149.02C212.34 155.17 212.99 159.34 213.77 161.64C214.54 163.97 215.87 166.05 218.4 167.78C222.9 170.74 229.47 171.91 238.08 172.24C258.72 172.99 261.11 164.98 262.33 184.35"
+                fill="#00558C" />
+            </g>
+            <defs>
+              <clipPath id="clip0_866_1651">
+                <rect width="288" height="223" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+
+        </div>
+
+        <div class="welcome-section">
+          <h2>Bem-vindo de volta</h2>
+          <p style="text-align: left;">Acesse sua conta para continuar</p>
+        </div>
+
+        <div id="errorMsg" class="error-message">
+          Erro: Credenciais inválidas
+        </div>
+
+        <form action="/login" method="POST" autocomplete="off">
+          <div class="form-group">
+            <input type="email" name="email" id="email" required placeholder="Email" class="input">
+          </div>
+
+          <div class="form-group">
+            <input type="password" name="password" id="passwordField" required placeholder="Senha" class="input"
+              autocomplete="off">
+          </div>
+
+          <button type="submit" class="button-primary">Entrar</button>
+        </form>
+
+        <button type="button" class="button-google">Entrar com Google</button>
+
+        <div class="signup-link">
+          Primeira acesso à plataforma? <a href="#" id="createAccountLink">Criar senha</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-right">
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      if (window.location.search.includes('error=1')) {
+        document.getElementById('errorMsg').style.display = 'block';
+        document.getElementById('passwordField').value = '';
+        window.history.replaceState({}, document.title, "/login");
+      }
+    };
+
+    document.getElementById('createAccountLink').addEventListener('click', function (e) {
+      e.preventDefault();
+      console.log('Navigate to create account page');
+    });
+  </script>
+</body>
+
+</html>

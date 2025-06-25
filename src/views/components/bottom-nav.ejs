@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="/css/bottom-nav.css">
+
+<nav class="bottom-nav">
+  <a href="/" class="<%= active === 'home' ? 'active' : '' %>" data-page="home">
+    <svg width="24" height="24" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M9.62617 2.29289C10.0167 1.90237 10.6499 1.90237 11.0404 2.29289L18.0404 9.29289C18.3264 9.57889 18.4119 10.009 18.2572 10.3827C18.1024 10.7564 17.7377 11 17.3333 11H16.3333V17C16.3333 17.5523 15.8856 18 15.3333 18H13.3333C12.781 18 12.3333 17.5523 12.3333 17V14C12.3333 13.4477 11.8856 13 11.3333 13H9.33328C8.781 13 8.33328 13.4477 8.33328 14V17C8.33328 17.5523 7.88557 18 7.33328 18H5.33328C4.781 18 4.33328 17.5523 4.33328 17V11H3.33328C2.92882 11 2.56418 10.7564 2.4094 10.3827C2.25462 10.009 2.34018 9.57889 2.62617 9.29289L9.62617 2.29289Z"
+        fill="currentColor" />
+    </svg>
+    <span>Home</span>
+  </a>
+
+  <a href="/mapa" class="<%= active === 'mapa' ? 'active' : '' %>" data-page="mapa">
+    <svg width="24" height="24" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M8.82349 2.17562C8.45624 2.02365 8.04368 2.02365 7.67643 2.17562L3.5931 3.86528C3.03232 4.09732 2.66663 4.64441 2.66663 5.2513V16.128C2.66663 17.1967 3.75257 17.9226 4.74015 17.514L8.24996 16.0616L12.5098 17.8243C12.877 17.9763 13.2896 17.9763 13.6568 17.8243L17.7402 16.1347C18.3009 15.9026 18.6666 15.3555 18.6666 14.7486V3.87199C18.6666 2.8032 17.5807 2.07731 16.5931 2.48596L13.0833 3.9383L8.82349 2.17562ZM8.2467 5C8.66092 5 8.9967 5.33579 8.9967 5.75V12.25C8.9967 12.6642 8.66092 13 8.2467 13C7.83249 13 7.4967 12.6642 7.4967 12.25V5.75C7.4967 5.33579 7.83249 5 8.2467 5ZM13.8365 7.75C13.8365 7.33579 13.5008 7 13.0865 7C12.6723 7 12.3365 7.33579 12.3365 7.75V14.25C12.3365 14.6642 12.6723 15 13.0865 15C13.5008 15 13.8365 14.6642 13.8365 14.25V7.75Z"
+        fill="currentColor" />
+    </svg>
+    <span>Mapa</span>
+  </a>
+
+  <a href="/inspections" class="<%= active === 'inspections' || active === 'inspecoes' ? 'active' : '' %>" data-page="inspections">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M7.50183 6H11.2477L11.25 6H14.6299C16.4915 6.00268 17.9999 7.51269 17.9999 9.375V18.75C19.6567 18.75 20.9999 17.4068 20.9999 15.75V6.10821C20.9999 4.60282 19.8751 3.2966 18.3358 3.16884C18.1121 3.15027 17.8879 3.13321 17.6632 3.11767C17.1633 2.15647 16.1583 1.5 15 1.5H13.5C12.3417 1.5 11.3367 2.15647 10.8368 3.11765C10.6121 3.13319 10.3878 3.15026 10.1639 3.16884C8.66165 3.29353 7.55421 4.54069 7.50183 6ZM13.5 3C12.6716 3 12 3.67157 12 4.5H16.5C16.5 3.67157 15.8284 3 15 3H13.5Z"
+        fill="currentColor" />
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M3 9.375C3 8.33947 3.83947 7.5 4.875 7.5H14.625C15.6605 7.5 16.5 8.33947 16.5 9.375V20.625C16.5 21.6605 15.6605 22.5 14.625 22.5H4.875C3.83947 22.5 3 21.6605 3 20.625V9.375ZM6 12C6 11.5858 6.33579 11.25 6.75 11.25H6.7575C7.17171 11.25 7.5075 11.5858 7.5075 12V12.0075C7.5075 12.4217 7.17171 12.7575 6.7575 12.7575H6.75C6.33579 12.7575 6 12.4217 6 12.0075V12ZM8.25 12C8.25 11.5858 8.58579 11.25 9 11.25H12.75C13.1642 11.25 13.5 11.5858 13.5 12C13.5 12.4142 13.1642 12.75 12.75 12.75H9C8.58579 12.75 8.25 12.4142 8.25 12ZM6 15C6 14.5858 6.33579 14.25 6.75 14.25H6.7575C7.17171 14.25 7.5075 14.5858 7.5075 15V15.0075C7.5075 15.4217 7.17171 15.7575 6.7575 15.7575H6.75C6.33579 15.7575 6 15.4217 6 15.0075V15ZM8.25 15C8.25 14.5858 8.58579 14.25 9 14.25H12.75C13.1642 14.25 13.5 14.5858 13.5 15C13.5 15.4142 13.1642 15.75 12.75 15.75H9C8.58579 15.75 8.25 15.4142 8.25 15ZM6 18C6 17.5858 6.33579 17.25 6.75 17.25H6.7575C7.17171 17.25 7.5075 17.5858 7.5075 18V18.0075C7.5075 18.4217 7.17171 18.7575 6.7575 18.7575H6.75C6.33579 18.7575 6 18.4217 6 18.0075V18Z"
+        fill="currentColor" />
+    </svg>
+    <span>Inspeções</span>
+  </a>
+
+  <a href="/calendar" class="<%= active === 'calendario' ? 'active' : '' %>" data-page="calendario">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+      <path
+        d="M6 2a.75.75 0 00-1.5 0v1H4a2 2 0 00-2 2v1h16V5a2 2 0 00-2-2h-.5V2a.75.75 0 00-1.5 0v1h-7V2zM2 8v7a2 2 0 002 2h12a2 2 0 002-2V8H2z" />
+    </svg>
+    <span>Calendário</span>
+  </a>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.bottom-nav a');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      
+      this.classList.add('active');
+      
+      if ('vibrate' in navigator) {
+        navigator.vibrate(10);
+      }
+    });
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('touchstart', function() {
+      this.style.transform = 'translateY(-1px) scale(0.98)';
+    });
+    
+    link.addEventListener('touchend', function() {
+      setTimeout(() => {
+        this.style.transform = '';
+      }, 100);
+    });
+  });
+});
+</script>
+app.use(express.static('public'));

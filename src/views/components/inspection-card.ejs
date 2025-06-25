@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/css/inspection-card.css">
+<div class="inspection-card">
+  <div class="inspection-card-content">
+    <div class="inspection-card-text">
+      <h3 class="inspection-card-title"><%= title %></h3>
+      <p class="inspection-card-description"><%= description %></p>
+      <% if (status === 'em_andamento') { %>
+        <span class="inspection-card-badge ongoing">EM ANDAMENTO</span>
+      <% } else if (status === 'concluida') { %>
+        <span class="inspection-card-badge completed">CONCLUÍDA</span>
+      <% } %>
+    </div>
+  </div>
+</div>

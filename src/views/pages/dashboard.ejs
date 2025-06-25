@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Dashboard</h1>
+    <h4 class="welcome-text">Bem vindo de volta, Admin!</h4>
+
+    <div class="search-filter">
+      <input type="text" placeholder="Pesquisar..." class="search-input" />
+      <div class="filter-actions">
+        <button class="filter-btn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M8.33336 16.6667C8.33329 16.8215 8.37637 16.9733 8.45777 17.1051C8.53917 17.2368 8.65566 17.3433 8.79419 17.4125L10.4609 18.2458C10.5879 18.3093 10.7291 18.3393 10.8711 18.3329C11.013 18.3264 11.1509 18.2838 11.2717 18.2091C11.3925 18.1344 11.4922 18.03 11.5614 17.9059C11.6305 17.7818 11.6668 17.6421 11.6667 17.5V11.6667C11.6669 11.2537 11.8204 10.8554 12.0975 10.5492L18.1167 3.89167C18.2246 3.77213 18.2955 3.6239 18.3209 3.4649C18.3464 3.3059 18.3252 3.14294 18.2599 2.99573C18.1947 2.84851 18.0882 2.72335 17.9534 2.63538C17.8185 2.5474 17.661 2.50038 17.5 2.5H2.50003C2.33886 2.50006 2.18118 2.54685 2.04607 2.6347C1.91096 2.72255 1.80422 2.84769 1.73878 2.99497C1.67334 3.14225 1.65201 3.30534 1.67738 3.46449C1.70274 3.62364 1.77371 3.77203 1.88169 3.89167L7.90252 10.5492C8.17964 10.8554 8.33317 11.2537 8.33336 11.6667V16.6667Z"
+              stroke="#75787B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <button class="create-btn">Criar inspeção</button>
+
+    <div class="section">
+      <h2>EM ANDAMENTO (4)</h2>
+      <div class="card-list horizontal">
+        <% for(let i=0; i < 4; i++) { %>
+          <div class="card ongoing">
+            <div class="card-content">
+              <h3>INTELI</h3>
+              <p class="location">Rua M.M.D.C, 80 – Butantã, São Paulo</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</p>
+            </div>
+            <div class="card-badge">36%</div>
+          </div>
+          <% } %>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>PRÓXIMAS INSPEÇÕES (5)</h2>
+      <div class="section-cards">
+        <% for(let i=0; i < 5; i++) { %>
+          <div class="inspection-item">
+            <div class="inspection-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M3.75 21H20.25M4.5 3H19.5M5.25 3V21M18.75 3V21M9 6.75H10.5M9 9.75H10.5M9 12.75H10.5M13.5 6.75H15M13.5 9.75H15M13.5 12.75H15M9 21V17.625C9 17.004 9.504 16.5 10.125 16.5H13.875C14.496 16.5 15 17.004 15 17.625V21"
+                  stroke="#75787B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="inspection-text">
+              <strong>Imóvel xyz</strong>
+              <p>Rua M.M.D.C, 80 – Butantã, São Paulo</p>
+            </div>
+            <div class="inspection-arrow">›</div>
+          </div>
+          <% } %>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>DESEMPENHO GERAL</h2>
+      <div class="performance">
+        <div class="date-range">
+          <div class="date-field">
+            <label>Início</label>
+            <input type="date" placeholder="Início" />
+          </div>
+          <div class="date-field">
+            <label>Entrega</label>
+            <input type="date" placeholder="Entrega" />
+          </div>
+        </div>
+        <div class="chart-container">
+          <div class="pie-chart">
+            <canvas id="pieChart"></canvas>
+            <div class="chart-legend">
+              <div class="legend-item">
+                <span class="legend-color concluidas"></span>
+                <span class="legend-label">CONCLUÍDAS</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color atrasadas"></span>
+                <span class="legend-label">ATRASADAS</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color pendentes"></span>
+                <span class="legend-label">PENDENTES</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>MAPA</h2>
+      <div class="map-placeholder">
+        <p>Mapa</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    const pieChart = new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Concluídas', 'Atrasadas', 'Pendentes'],
+        datasets: [{
+          data: [37, 37, 26],
+          backgroundColor: [
+            'rgb(0, 177, 64)',
+            'rgb(242, 48, 48)',
+            'rgb(115, 115, 115)'
+          ],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

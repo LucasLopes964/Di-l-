@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="/css/header.css">
+
+<header class="header">
+  <div class="header__content">
+    <!-- Botão de voltar (apenas mobile) -->
+    <button class="header__back-button" aria-label="Voltar" onclick="window.history.back()">
+      <img src="/assets/arrow-left.svg" alt="" class="header__back-icon">
+    </button>
+
+    <!-- Spacer para desktop -->
+    <div class="header__spacer"></div>
+
+    <!-- Navegação central -->
+    <nav class="header__nav" style="position: relative;">
+      <a href="/config" class="header__button" aria-label="Configurações">
+        <img src="/assets/icon-settings-outline.svg" alt="" class="header__icon">
+      </a>
+      <button class="header__button" aria-label="Notificações" id="notificationBtn">
+        <img src="/assets/icon-notifications.svg" alt="" class="header__icon">
+      </button>
+      <div id="notificationPopup" class="notification-popup" style="display: none;">
+        <p>Você não tem novas notificações.</p>
+      </div>
+    </nav>
+
+    <!-- Separador -->
+    <div class="header__separator"></div>
+
+    <!-- Logo -->
+    <img src="/assets/logo-ipt.svg" alt="IPT Logo" class="header__logo">
+  </div>
+</header>
+<script>
+  const btn = document.getElementById('notificationBtn');
+  const popup = document.getElementById('notificationPopup');
+
+  btn.addEventListener('click', async () => {
+    if (popup.style.display === 'none') {
+      try {
+        const res = await fetch('/api/inspections/nextDueDate');
+        const inspection = await res.json();
+        if (inspection && inspection.inspection_title) {
+          popup.innerHTML = `
+            <strong>Próxima inspeção:</strong>
+            <p>${inspection.inspection_title}</p>
+            <p>Vencimento: ${new Date(inspection.due_date).toLocaleDateString()}</p>
+            <p>${inspection.description || ''}</p>
+          `;
+        } else {
+          popup.innerHTML = '<p>Você não tem inspeções próximas do vencimento.</p>';
+        }
+      } catch (e) {
+        popup.innerHTML = '<p>Erro ao carregar notificações.</p>';
+      }
+      popup.style.display = 'block';
+    } else {
+      popup.style.display = 'none';
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !popup.contains(e.target)) {
+      popup.style.display = 'none';
+    }
+  });
+</script>
+

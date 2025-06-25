@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<div class="container">
+  <input type="hidden" id="userId" value="<%= user.id %>">
+  <header class="m-4" style="margin-bottom:1.5rem;">
+    <h1 class="small" style="font-size:var(--text-h3);font-weight:700;color:var(--color-foreground);letter-spacing:-0.5px;">Home</h1>
+  </header>
+
+  <section class="m-4 card">
+    <h2 class="small" style="color:var(--color-muted-foreground);font-weight:600;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.04em;">
+      Em andamento
+    </h2>
+    <div class="horizontal-scroll card-list horizontal">
+      <% inspections.filter(i => i.status === 'em_andamento').forEach(inspection => { %>
+        <div class="inspection-card" data-inspection-id="<%= inspection.id %>">
+          <%- include('../components/inspection-card', { 
+            id: inspection.id,
+            title: inspection.inspection_title, 
+            description: inspection.description, 
+            status: inspection.status
+          }) %>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <section class="m-4 card">
+    <h2 class="small" style="color:var(--color-muted-foreground);font-weight:600;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.04em;">
+      Concluída
+    </h2>
+    <div class="horizontal-scroll card-list horizontal">
+      <% inspections.filter(i => i.status === 'concluida').forEach(inspection => { %>
+        <div class="inspection-card" data-inspection-id="<%= inspection.id %>">
+          <%- include('../components/inspection-card', { 
+            title: inspection.inspection_title, 
+            description: inspection.description, 
+            status: inspection.status
+          }) %>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+
+</div>
+<script src="/scripts/home.js"> </script>

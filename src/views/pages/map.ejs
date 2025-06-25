@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/map.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+  <div class="container">
+    <header class="m-4" style="margin-bottom:1.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <button onclick="window.history.back()" style="display: none; background: none; border: none; cursor: pointer; padding: 0.25rem; border-radius: 50%;" class="desktop-back-chevron">
+          <img src="/assets/chevron-left.svg" alt="Voltar" style="width: 32px; height: 32px; filter: brightness(0) saturate(100%) invert(47%) sepia(8%) saturate(1077%) hue-rotate(183deg) brightness(95%) contrast(89%);">
+        </button>
+        <h1 class="small" style="font-size:var(--text-h3);font-weight:700;color:var(--color-foreground);letter-spacing:-0.5px; margin: 0;">Mapa de Inspeções</h1>
+      </div>
+    </header>
+    <style>
+      @media (min-width: 769px) {
+        .desktop-back-chevron {
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+        }
+        .desktop-back-chevron:hover {
+          background-color: var(--color-muted-background);
+        }
+      }
+    </style>
+    <section class="m-4">
+      <div id="map" class="map-placeholder rounded" style="width:100%;height:400px;"></div>
+      <div id="inspection-card" class="inspection-card" style="display:none;"></div>
+      <input type="hidden" id="userId" value="<%= user.id %>">
+    </section>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/scripts/map.js"></script>
+</body>
+</html>

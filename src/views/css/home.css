@@ -1,0 +1,130 @@
+.container {
+  padding: 0rem 1rem 1rem 0rem;
+  font-family: var(--font-family);
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  font-size: var(--text-body-small);
+  color: var(--color-muted-foreground);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  color: var(--color-muted-foreground, #666);
+  font-weight: 700;
+  margin-bottom: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card-list.horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 120px;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.5rem;
+  scroll-behavior: smooth; /* Smooth scrolling */
+  -webkit-overflow-scrolling: touch; /* For iOS momentum scroll */
+}
+
+.card-list.horizontal > * {
+  flex: 0 0 auto; /* Prevent shrinking/wrapping */
+  scroll-snap-align: start;
+}
+
+/* Optional: Hide scrollbar for a cleaner look */
+.card-list.horizontal::-webkit-scrollbar {
+  height: 0px;
+  background: transparent;
+}
+.card-list.horizontal {
+  scrollbar-width: none; /* Firefox */
+}
+.card-list.horizontal::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.map-placeholder {
+  height: 280px;
+  border-radius: 12px;
+  background-color: var(--color-muted-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: var(--text-body-medium);
+  color: var(--color-muted-foreground);
+  background: var(--color-muted-background, #f7f8fa);
+  padding: 2rem 1rem;
+}
+
+.map-text {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  color: var(--color-muted-foreground);
+  font-size: var(--text-body-small);
+  font-style: italic;
+}
+
+/* Mobile header - ocultar no desktop */
+.mobile-header {
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .mobile-header {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-placeholder {
+    height: 140px;
+  }
+}
+
+.home-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.home-header {
+  margin-bottom: 0.5rem;
+}
+
+.home-title {
+  font-size: var(--text-h3);
+  font-weight: 700;
+  color: var(--color-foreground, #222);
+  margin-bottom: 0;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 768px) {
+  #map {
+    padding-bottom: 80px; /* ajuste conforme a altura da sua bottom nav */
+    box-sizing: border-box;
+     z-index: 0.9 !important;
+  }
+  .container {
+    padding-bottom: 80px !important; /* ajuste para a altura real da sua bottom nav */
+  }
+}

@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/css/calendar.css">
+<link rel="stylesheet" href="/css/style.css">
+<div class="container">
+  <header class="m-4" style="margin-bottom:1.5rem;">
+    <h1 class="small" style="font-size:var(--text-h3);font-weight:bold;color:var(--color-foreground);letter-spacing:-0.5px;">Calendário</h1>
+  </header>
+
+  <section class="m-4">
+    <div class="card">
+      <div id="calendar"></div>
+    </div>
+  </section>
+
+  <section class="m-4">
+    <h2 class="small" style="color:var(--color-muted-foreground);font-weight:600;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.04em;">
+      Inspeção Selecionada  
+    </h2>
+    <div id="inspectionList" style="display:flex;flex-direction:column;gap:1.2rem;min-height:80px;">
+    </div>
+  </section>
+</div>
+
+<input type="hidden" id="userId" value="<%= user.id %>">
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script src="/scripts/calendarInspector.js"></script>

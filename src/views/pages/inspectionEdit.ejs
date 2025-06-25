@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Inspeção</title>
+  <link rel="stylesheet" href="/css/inspectionCreation.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Editar inspeção</h1>
+    <form id="inspectionEditForm" class="inspection-form">
+      <div class="form-group">
+        <label for="nome">Nome <span class="required-star">*</span></label>
+        <input type="text" id="nome" name="nome" placeholder="Nome da Inspeção" required>
+      </div>
+
+      <div class="form-group">
+        <label for="endereco">Endereço <span class="required-star">*</span></label>
+        <input type="text" id="endereco" name="endereco" placeholder="Adicione aqui o endereço do local" required>
+      </div>
+      <div class="form-group">
+        <label>Localização no Mapa</label>
+        <div id="map" style="width: 100%; height: 300px; margin-top: 8px;"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Prazos <span class="required-star">*</span></label>
+        <div class="date-inputs">
+          <div class="date-field">
+            <span>Início</span>
+            <input type="date" name="inicio" id="inicio" required>
+          </div>
+          <div class="date-field">
+            <span>Entrega</span>
+            <input type="date" name="entrega" id="entrega" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="membros">Membros <span class="required-star">*</span></label>
+        <div id="membersContainer">
+          <% users.forEach(user => { %>
+            <div class="checkbox-member">
+              <label>
+                <input type="checkbox" name="members[]" value="<%= user.id %>">
+                <%= user.name %>
+              </label>
+            </div>
+          <% }) %>
+        </div>
+        <div class="selected-members">
+          <p>Membros selecionados: <span id="selectedMembers"></span></p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="coordenador">Coordenador <span class="required-star">*</span></label>
+        <select id="coordenador" name="coordenador" required>
+          <option value="">Selecione</option>
+          <% users.forEach(user => { %>
+            <option value="<%= user.id %>"><%= user.name %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="edificio">Tipo de edifício <span class="required-star">*</span></label>
+        <select id="edificio" name="edificio" required>
+          <option value="">Selecione</option>
+          <option value="residencial">Residencial</option>
+          <option value="comercial">Comercial</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="observacoes">Observações iniciais</label>
+        <textarea id="observacoes" name="observacoes" placeholder="Adicione aqui as observações iniciais" rows="4"></textarea>
+      </div>
+
+      <input type="hidden" name="latitude" id="latitude" />
+      <input type="hidden" name="longitude" id="longitude" />
+
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Salvar alterações</button>
+        <button type="button" class="btn secondary" onclick="location.href='/inspections'">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/scripts/inspectionEdit.js"></script>
+</body>
+</html>

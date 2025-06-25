@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Configurações</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/settings.css">
+  <script>
+    // Aplica o tema salvo no localStorage imediatamente ao carregar a página
+    (function() {
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark-theme');
+          document.body.classList.add('dark-theme');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header class="m-4" style="margin-bottom:1.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <button onclick="window.history.back()" style="display: none; background: none; border: none; cursor: pointer; padding: 0.25rem; border-radius: 50%;" class="desktop-back-chevron">
+          <img src="/assets/chevron-left.svg" alt="Voltar" style="width: 32px; height: 32px; filter: brightness(0) saturate(100%) invert(47%) sepia(8%) saturate(1077%) hue-rotate(183deg) brightness(95%) contrast(89%);">
+        </button>
+        <h1 class="small" style="font-size:var(--text-h3);font-weight:700;color:var(--color-foreground);letter-spacing:-0.5px; margin: 0;">Configurações</h1>
+      </div>
+    </header>
+    <style>
+      @media (min-width: 769px) {
+        .desktop-back-chevron {
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+        }
+        .desktop-back-chevron:hover {
+          background-color: var(--color-muted-background);
+        }
+      }
+    </style>
+    <section class="m-4 section">
+      <div class="section-header">
+        <h2 class="section-title">APARÊNCIA</h2>
+      </div>
+      <div class="section-cards">
+        <div class="settings-item">
+          <div class="item-info">
+            <label class="item-label">Tema do Sistema</label>
+            <span class="item-description">Escolha entre modo claro ou escuro</span>
+          </div>
+          <div class="theme-selector">
+            <button class="theme-option" data-theme="light">Claro</button>
+            <button class="theme-option" data-theme="dark">Escuro</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="m-4 section card">
+      <div class="section-header">
+        <h2 class="section-title">PERMISSÕES</h2>
+      </div>
+      <div class="section-cards">
+        <div class="settings-item">
+          <div class="item-info">
+            <label class="item-label">Acesso à Câmera</label>
+            <span class="item-description">Permitir acesso à câmera para inspeções</span>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" id="camera-toggle" class="toggle-input" checked>
+            <label for="camera-toggle" class="toggle-label"></label>
+          </div>
+        </div>
+        <div class="settings-item">
+          <div class="item-info">
+            <label class="item-label">Acesso ao Microfone</label>
+            <span class="item-description">Permitir acesso ao microfone para gravações</span>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" id="microphone-toggle" class="toggle-input" checked>
+            <label for="microphone-toggle" class="toggle-label"></label>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="m-4 section card">
+      <div class="section-header">
+        <h2 class="section-title">CONTA</h2>
+      </div>
+      <div class="section-cards">
+        <div class="settings-item">
+          <div class="item-info">
+            <label class="item-label">Nome</label>
+          </div>
+          <input type="text" class="input" id="user-name" placeholder="Digite seu nome" value="<%= user ? user.name || '' : '' %>" autocomplete="off">
+        </div>
+        <div class="settings-item">
+          <div class="item-info">
+            <label class="item-label">Email</label>
+          </div>
+          <input type="email" class="input" id="user-email" placeholder="Digite seu email" value="<%= user ? user.email || '' : '' %>" readonly autocomplete="off">
+        </div>
+        <div class="settings-item password-item">
+          <div class="password-fields">
+            <label class="item-label">Alterar Senha</label>
+            <input type="password" class="input" id="current-password" placeholder="Senha atual" autocomplete="new-password">
+            <input type="password" class="input" id="new-password" placeholder="Nova senha" autocomplete="new-password">
+            <input type="password" class="input" id="confirm-password" placeholder="Confirmar nova senha" autocomplete="new-password">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="m-4 section card">
+      <div class="section-header">
+        <h2 class="section-title">SISTEMA</h2>
+      </div>
+      <div class="section-cards">
+        <div class="settings-item">
+          <div class="item-info">
+            <label class="item-label">Limpar Cache</label>
+            <span class="item-description">Remove dados temporários armazenados</span>
+          </div>
+          <button class="btn secondary" id="clear-cache">Limpar Cache</button>
+        </div>
+      </div>
+    </section>
+    <div class="actions m-4">
+      <button class="btn primary" id="save-settings">Salvar Configurações</button>
+      <button class="btn secondary" id="reset-settings">Restaurar Padrões</button>
+    </div>
+  </div>
+  <script src="/scripts/settings.js"></script>
+</body>
+</html>

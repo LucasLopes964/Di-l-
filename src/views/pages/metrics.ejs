@@ -1,0 +1,162 @@
+<div class="container">
+  <h1>Métricas</h1>
+
+  <section class="card-section">
+    <h2>Inspeções Pendentes</h2>
+
+    <div class="periodo">
+      <input type="date" placeholder="Início">
+      <input type="date" placeholder="Entrega">
+    </div>
+
+    <% for (let i = 0; i < 3; i++) { %>
+      <div class="inspection-card">
+        <div class="inspection-info">
+          <div>
+            <strong>Inspeção</strong>
+            <p>Rua M.M.D.C, 80 – Butantã, São Paulo</p>
+          </div>
+          <span class="progress-count">35/48</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress" style="width: 72%;"></div>
+        </div>
+      </div>
+    <% } %>
+  </section>
+
+  <section class="card-section">
+    <h2>Desempenho Geral</h2>
+
+    <div class="periodo">
+      <input type="date" placeholder="Início">
+      <input type="date" placeholder="Entrega">
+    </div>
+
+    <div class="chart-placeholder">
+      <p>📊 Gráfico de pizza: Concluídas (37%), Atrasadas (37%), Pendentes (26%)</p>
+    </div>
+  </section>
+
+  <section class="card-section">
+    <h2>Desempenho Inspeção</h2>
+
+    <div class="filter-bar">
+      <input type="text" placeholder="Buscar inspeção...">
+      <button class="filter-btn">Filtrar</button>
+    </div>
+
+    <div class="chart-placeholder">
+      <p>📊 Gráfico de barras: Tempo médio, Taxa de atraso, Nº Patologias, Taxa retrabalho</p>
+    </div>
+  </section>
+</div>
+
+<style>
+  .container {
+    padding: 16px;
+    font-family: sans-serif;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+
+  .card-section {
+    margin-bottom: 32px;
+  }
+
+  .card-section h2 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .periodo {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .periodo input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .inspection-card {
+    background-color: #f9f9f9;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+
+  .inspection-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .inspection-info p {
+    font-size: 12px;
+    color: #666;
+    margin: 4px 0 0;
+  }
+
+  .progress-count {
+    font-size: 12px;
+    color: #555;
+    font-weight: bold;
+  }
+
+  .progress-bar {
+    background-color: #e0e0e0;
+    height: 6px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress {
+    background-color: #2196f3;
+    height: 100%;
+    width: 0%;
+  }
+
+  .chart-placeholder {
+    background-color: #eee;
+    height: 180px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 12px;
+    color: #555;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .filter-bar input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .filter-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ddd;
+    cursor: pointer;
+  }
+</style>

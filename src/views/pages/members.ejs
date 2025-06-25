@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membros</title>
+</head>
+<body>
+  <h1>Membros</h1>
+
+
+  <% const membros = [
+    { nome: 'Lucas Mendes', cargo: 'Coord.', equipe: 'EQUIPE 4', inspecao: 'INSPEÇÃO 7' },
+    { nome: 'Ana Souza', cargo: 'Inspetor', equipe: 'EQUIPE 4', inspecao: 'INSPEÇÃO 7' },
+    { nome: 'Juliana Lima', cargo: 'Inspetor', equipe: 'EQUIPE 4', inspecao: 'INSPEÇÃO 7' },
+    { nome: 'Carlos Rocha', cargo: 'Inspetor', equipe: 'EQUIPE 4', inspecao: 'INSPEÇÃO 7' }
+  ]; %>
+
+
+  <% membros.forEach(membro => { %>
+    <div>
+      <p><strong><%= membro.nome %> | <%= membro.cargo %></strong></p>
+      <p><%= membro.equipe %> - <%= membro.inspecao %></p>
+      <hr>
+    </div>
+  <% }); %>
+
+
+  <div>
+    <button>Adicionar membro</button>
+    <button>Editar</button>
+  </div>
+</body>
+</html>
